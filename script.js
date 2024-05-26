@@ -21,7 +21,6 @@ const processString = (input) => {
     return trimmedString;
 }
 
-// Пример использования функции
 const inputString = "  Это строка с пробелами в начале и в конце   ";
 const processedString = processString(inputString);
-console.log(processedString); // Выведет: "Это строка с пробелами в н..."
+console.log(processedString);
