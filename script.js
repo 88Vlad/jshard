@@ -1,26 +1,35 @@
-"use strict";
+'use strict'
+// массив week и записать в него дни недели в виде строк
+const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+// текущий день недели
+const currentDayIndex = new Date().getDay();
+// контейнер для вывода дней недели
+const daysContainer = document.getElementById('daysContainer');
 
-// Создаем функцию
-const processString = (input) => {
-    // Проверяем, является ли аргумент строкой
-    if (typeof input !== 'string') {
-        alert('Пожалуйста, введите строку');
-        return; // Выходим из функции, если аргумент не строка
-    }
+// Убедитесь, что контейнер существует
+if (daysContainer) {
+    // все дни недели
+    week.forEach((day, index) => {
+        const dayElement = document.createElement('p');
+        dayElement.textContent = day;
 
-    // Убираем пробелы в начале и в конце строки
-    const trimmedString = input.trim();
+        // Выходные дни - курсивом
+        if (index === 0 || index === 6) {
+            dayElement.style.fontStyle = 'italic';
+        }
 
-    // Проверяем длину строки
-    if (trimmedString.length > 30) {
-        // Если строка более 30 символов, скрываем лишнее и добавляем три точки
-        return trimmedString.substring(0, 30) + '...';
-    }
+        // Текущий день - жирным шрифтом
+        if (index === currentDayIndex) {
+            dayElement.style.fontWeight = 'bold';
+        }
 
-    // Возвращаем обработанную строку
-    return trimmedString;
+        // Добавляем элемент в контейнер
+        daysContainer.appendChild(dayElement);
+    });
+} else {
+    console.error('daysContainer not found in the document.');
 }
 
-const inputString = "  Это строка с пробелами в начале и в конце   ";
-const processedString = processString(inputString);
-console.log(processedString);
+<
+!DOCTYPE html >
+    ...
